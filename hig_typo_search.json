@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+    "name": "Typography | Apple Developer Documentation",
+    "snippet": "While using a custom font, be guided by the recommended minimum font sizes for various styles and weights in Specifications. Implement accessibility ...",
+    "host_name": "developer.apple.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://gist.github.com/eonist/b9c180a67980c6e18a5184f19bff68fa",
+    "name": "Apple Human Interface Typography Guide (Figma-Centric Edition)",
+    "snippet": "SF Pro Text (≤19pt): Use for body text. Add tracking manually to match Apple's spec (e.g., 17pt = -0.43px). SF Pro Display (≥20pt): Ideal for headers. Adjust ...",
+    "host_name": "gist.github.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2020/10175",
+    "name": "The details of UI typography - WWDC20 - Videos - Apple Developer",
+    "snippet": "When picking a text style with a design, everything else besides the design stays the same, including font size, weight and line height. I know many of you work ...",
+    "host_name": "developer.apple.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/la/videos/play/wwdc2020/10175",
+    "name": "The details of UI typography - WWDC20 - Videos - Apple Developer",
+    "snippet": "Get up to speed on the latest advancements to the San Francisco font family including the move to variable fonts for accommodating optical sizes and weights.",
+    "host_name": "developer.apple.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://median.co/blog/apples-ui-dos-and-donts-typography",
+    "name": "What are Apple's guidelines on typography for iOS apps? - Median.co",
+    "snippet": "Best practices — according to Apple — include legible fonts with a minimum 11 pt in size. Your font should also support Dynamic Type, be it ...",
+    "host_name": "median.co",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://blog.jim-nielsen.com/2019/design-principles-applied-to-sf-fonts",
+    "name": "Design Principles Applied to the SF Fonts - Jim Nielsen's Blog",
+    "snippet": "SF Pro Text weights comes in six weights. Text weights. Meanwhile SF Pro Display comes in nine weights. Display weights. Why not have the same ...",
+    "host_name": "blog.jim-nielsen.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://observablehq.com/@thierryc/dynamic-type-sizes-visualized",
+    "name": "Dynamic Type Sizes Visualized / Thierry Charbonnel | Observable",
+    "snippet": "Apple Use Two Fonts to define his font grid. In interface mockups, use SF Pro Text for text 19 points or smaller, SF Pro Display for text 20 points or larger, ...",
+    "host_name": "observablehq.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://codershigh.github.io/guidelines/ios/human-interface-guidelines/visual-design/typography/index.html",
+    "name": "Typography - Visual Design - iOS Human Interface Guidelines",
+    "snippet": "Use the correct font variant in interface mockups. Use SF UI Text for text 19 points or smaller. Use SF UI Display for text 20 points or larger. Adjust tracking ...",
+    "host_name": "codershigh.github.io",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://wwdcnotes.com/documentation/wwdcnotes/wwdc20-10175-the-details-of-ui-typography",
+    "name": "The details of UI typography | Documentation - WWDC Notes",
+    "snippet": "Now, SF font doesn't have a hard breakpoint at 20pts for tracking, instead it varies smoothly between 17 and 28 points · System fonts have a pre defined tracking ...",
+    "host_name": "wwdcnotes.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://designsystem.digital.gov/components/typography",
+    "name": "Typography | U.S. Web Design System (USWDS) - Digital.gov",
+    "snippet": "... line height of 1.5 on 16px text results in a line height of 24px. Longer texts require more line height. Headings and other content elements no longer than a ...",
+    "host_name": "designsystem.digital.gov",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

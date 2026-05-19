@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines",
+    "name": "Human Interface Guidelines | Apple Developer Documentation",
+    "snippet": "The HIG contains guidance and best practices that can help you design a great experience for any Apple platform.\nHuman Interface Guidelines. The HIG contains guidance and best practices that can help you design a great experience for any Apple platform.",
+    "host_name": "developer.apple.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+    "name": "Buttons | Apple Developer Documentation",
+    "snippet": "Versatile and highly customizable, buttons give people simple, familiar ways to do tasks in your app. In general, a button combines three attributes to clearly ...",
+    "host_name": "developer.apple.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/356",
+    "name": "Get to know the new design system - WWDC25 - Apple Developer",
+    "snippet": "Learn how the system reshapes the relationship between interface and content, enabling you to create designs that are dynamic, harmonious, and consistent across ...",
+    "host_name": "developer.apple.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design",
+    "name": "Design - Apple Developer",
+    "snippet": "Visit the Human Interface Guidelines. Create with Icon Composer. Build app icons for the new design, and apply real-time dynamic properties and other effects.",
+    "host_name": "developer.apple.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/layout",
+    "name": "Layout | Apple Developer Documentation",
+    "snippet": "A consistent layout that adapts to various contexts makes your experience more approachable and helps people enjoy their favorite apps and games on all ...\nHuman Interface Guidelines. To navigate the symbols, press Up Arrow, Down ... For guidance on displaying text in your app, see Typography. Preview your ...",
+    "host_name": "developer.apple.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/whats-new",
+    "name": "What's new - Design - Apple Developer",
+    "snippet": "Discover the latest additions and updates to design guidance. Explore inspirational designs, videos, articles, and resources.",
+    "host_name": "developer.apple.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/news/?id=v8a3aetj",
+    "name": "Meet the new Human Interface Guidelines - Apple Developer",
+    "snippet": "Apple's Human Interface Guidelines (HIG) is a comprehensive resource for designers and developers looking to create great experiences across Apple platforms.",
+    "host_name": "developer.apple.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/219",
+    "name": "Meet Liquid Glass - WWDC25 - Videos - Apple Developer",
+    "snippet": "Liquid Glass unifies Apple platform design language while providing a more dynamic and expressive user experience. Get to know the design...",
+    "host_name": "developer.apple.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2021/10102",
+    "name": "Meet the Location Button - WWDC21 - Videos - Apple Developer",
+    "snippet": "Meet CLLocationButton: a secure interface element that provides an easy, low-friction way to grant your app location access only when and where it is needed.",
+    "host_name": "developer.apple.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+    "name": "Live Activities | Apple Developer Documentation",
+    "snippet": "For example, when placing a rounded rectangle near a corner of your Live Activity, match its corner radius to the outer corner radius of the Live Activity by ...",
+    "host_name": "developer.apple.com",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

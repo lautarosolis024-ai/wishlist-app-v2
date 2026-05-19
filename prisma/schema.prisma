@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model WishlistItem {
+  id              String   @id @default(cuid())
+  url             String
+  title           String
+  price           Float?
+  originalPrice   Float?
+  currency        String   @default("ARS")
+  brand           String?
+  store           String?
+  description     String?
+  images          String   @default("[]")
+  sizeGuide       String?
+  recommendedSize String?
+  sizeReason      String?
+  category        String   @default("otros")
+  notes           String?
+  purchased       Boolean  @default(false)
+  priority        Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model UserProfile {
+  id            String   @id @default("default")
+  chest         Float?
+  waist         Float?
+  hips          Float?
+  shoulderWidth Float?
+  armLength     Float?
+  inseam        Float?
+  height        Float?
+  weight        Float?
+  shoeSize      Float?
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/color",
+    "name": "Color | Apple Developer Documentation",
+    "snippet": "The system defines colors that look good on various backgrounds and appearance modes, and can automatically adapt to vibrancy and accessibility settings.",
+    "host_name": "developer.apple.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/materials",
+    "name": "Materials | Apple Developer Documentation",
+    "snippet": "Depending on configuration and system settings, system views and controls use vibrancy to make foreground content stand out against any background. Test your ...",
+    "host_name": "developer.apple.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/220",
+    "name": "Say hello to the new look of app icons - WWDC25 - Apple Developer",
+    "snippet": "Learn how to use frostiness and translucency to make your app icon more vibrant, dynamic, and expressive, and find out how to ensure your icon works well with ...",
+    "host_name": "developer.apple.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/whats-new",
+    "name": "What's new - Design - Apple Developer",
+    "snippet": "Rebuilt from the ground up, the new iOS and iPadOS design kit includes liquid glass materials, app icons, updated system colors and a comprehensive set of app ...",
+    "host_name": "developer.apple.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2019/808/?time=631",
+    "name": "What's New in iOS Design - WWDC19 - Videos - Apple Developer",
+    "snippet": "... Vibrancy is a visual affect that's used throughout iOS and other Apple platforms. With system materials, it's typically best to use vibrancy rather than solid ...",
+    "host_name": "developer.apple.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+    "name": "Typography | Apple Developer Documentation",
+    "snippet": "Your typographic choices can help you display legible text, convey an information hierarchy, communicate important content, and express your brand or style.",
+    "host_name": "developer.apple.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2023/10194",
+    "name": "Design dynamic Live Activities - WWDC23 - Videos - Apple Developer",
+    "snippet": "Live Activities allow your app to display live information in key system locations on iOS and iPadOS. Learn the best way to create graphically rich layouts.",
+    "host_name": "developer.apple.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/219",
+    "name": "Meet Liquid Glass - WWDC25 - Videos - Apple Developer",
+    "snippet": "Liquid Glass unifies Apple platform design language while providing a more dynamic and expressive user experience. Get to know the design...",
+    "host_name": "developer.apple.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/243",
+    "name": "What's new in UIKit - WWDC25 - Videos - Apple Developer",
+    "snippet": "We'll also cover how you can include SwiftUI scenes in your UIKit app and explore SF Symbols, HDR color pickers, and more. Chapters. 0:00 - Introduction; 0:59 - ...",
+    "host_name": "developer.apple.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/tech-talks/502",
+    "name": "An Introduction to HDR Video - Tech Talks - Apple Developer",
+    "snippet": "Dolby Vision and HDR10 enable amazing new video viewing experiences with a wider color gamut and deeper contrast. Learn how this new technology works.",
+    "host_name": "developer.apple.com",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

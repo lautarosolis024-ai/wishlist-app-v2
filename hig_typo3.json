@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+    "name": "Typography | Apple Developer Documentation",
+    "snippet": "A text style specifies a combination of font weight, point size, and leading values for each text size. For example, the body text style uses values that ...\nSF Pro is the system font in visionOS. If you use NY, you need to specify the type styles you want. visionOS uses bolder versions of the Dynamic Type body and ...",
+    "host_name": "developer.apple.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://gist.github.com/zacwest/916d31da5d03405809c4",
+    "name": "iOS default font sizes - also available on https://www.iosfontsizes.com",
+    "snippet": ".largeTitle, SFUI-Regular, 34.0 ;.title1, SFUI-Regular, 28.0 ;.title2, SFUI-Regular, 22.0 ;.title3, SFUI-Regular, 20.0.\nStyle, Font, Size .extraLargeTitle, SFUI-Bold, 36.0 .extraLargeTitle2, SFUI-Bold, 28.0 .largeTitle, SFUI-Regular, 34.0 .title1, SFUI-Regular, 28.0 .title2, SFUI ...",
+    "host_name": "gist.github.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://smithery.ai/skills/axiaoge2/apple-hig-designer",
+    "name": "apple-hig-designer - Skill - Smithery",
+    "snippet": "... text-title1: 28px; /* Title 1 */ --text-large-title: 34px; /* Large Title */. Typography Rules: Use SF Pro Display for sizes ≥ 20pt; Use SF Pro Text for sizes < ...",
+    "host_name": "smithery.ai",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2020/10175",
+    "name": "The details of UI typography - WWDC20 - Videos - Apple Developer",
+    "snippet": "... title1 text style, which maps to SF Pro Bold. You can apply bold ... And here we can see how body, title1 and footnote text styles scale with Dynamic Type.\nWe start with a text such as \"Today,\" and using emphasized large title text style. For now it's using SF Pro Bold. Let's try to apply rounded design using ...\nWe start with a text such as \"Today,\" and using emphasized large title text style. For now it's using SF Pro Bold. Let's try to apply rounded design using the ...",
+    "host_name": "developer.apple.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/la/videos/play/wwdc2020/10175",
+    "name": "The details of UI typography - WWDC20 - Videos - Apple Developer",
+    "snippet": "Get up to speed on the latest advancements to the San Francisco font family including the move to variable fonts for accommodating optical sizes and weights. We ...",
+    "host_name": "developer.apple.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://stackoverflow.com/questions/62647160/preview-of-apple-system-font-sizes-e-g-body-callout-caption-etc",
+    "name": "Preview of Apple system font sizes (e.g. body, callout, caption, etc.)?",
+    "snippet": "Is there anywhere with a preview of these sizes for some of the more common dynamic type sizes (eg xSmall, xxxLarge)?",
+    "host_name": "stackoverflow.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://codershigh.github.io/guidelines/ios/human-interface-guidelines/visual-design/typography/index.html",
+    "name": "Typography - Visual Design - iOS Human Interface Guidelines",
+    "snippet": "San Francisco is the system font on iOS. There are two variants of this font: SF UI Text for text 19 points or smaller, and SF UI Display for text 20 points or ...",
+    "host_name": "codershigh.github.io",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sagarunagar.com/blog/swiftui-fonts-guide",
+    "name": "SwiftUI Fonts Explained - System Styles, Modifiers and Accessibility",
+    "snippet": "Learn SwiftUI fonts in depth — system styles, font modifiers, accessibility with Dynamic Type with real-world examples.",
+    "host_name": "www.sagarunagar.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://wwdcnotes.com/documentation/wwdcnotes/wwdc20-10175-the-details-of-ui-typography",
+    "name": "The details of UI typography | Documentation - WWDC Notes",
+    "snippet": "Text styles are a set of predefined combinations of weight, size and leading values. Here is how you can get a font of a certain style with emphasized weight:.\nSF font was designed to provide two separate versions depending on the current size set, for fonts smaller than 20 points it used SF Text while fonts at 20 ...\nSF Symbols make it easy to adopt high-quality, Apple-designed symbols created to look great with San Francisco, the system font for all Apple platforms.",
+    "host_name": "wwdcnotes.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://median.co/blog/apples-ui-dos-and-donts-typography",
+    "name": "What are Apple's guidelines on typography for iOS apps? - Median.co",
+    "snippet": "Font size: Larger text such as a title or a heading (H1, H2, H3) showcase importance while smaller text such as body text are used to support ...",
+    "host_name": "median.co",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

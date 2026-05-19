@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/typography",
+    "name": "Typography | Apple Developer Documentation",
+    "snippet": "A text style specifies a combination of font weight, point size, and leading values for each text size. For example, the body text style uses values that ...",
+    "host_name": "developer.apple.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://gist.github.com/eonist/b9c180a67980c6e18a5184f19bff68fa",
+    "name": "Apple Human Interface Typography Guide with a Figma-focused",
+    "snippet": "SF Pro Display (≥20pt): Ideal for headers. Adjust letter spacing accordingly (e.g., 28pt = -0.8px). SF Pro Rounded: For friendly UI. Match the ...",
+    "host_name": "gist.github.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2020/10175",
+    "name": "The details of UI typography - WWDC20 - Videos - Apple Developer",
+    "snippet": "Learn how to achieve exceptional typography in your app's user interface that enhances legibility, accessibility, and consistency across Apple platforms.",
+    "host_name": "developer.apple.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://alansdead.github.io/typography-system-guide",
+    "name": "Typography System Guide — iOS & Android (v2.1)",
+    "snippet": "On iOS, the system Bold Text setting increases font weight — a text style that was body-weight may become bold, potentially crossing the large text threshold ...",
+    "host_name": "alansdead.github.io",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://learnui.design/blog/ios-font-size-guidelines.html",
+    "name": "The iOS App Font Size Guidelines (iOS 17 update) - Learn UI Design",
+    "snippet": "Here's the quick and dirty summary of font sizes assuming (a) you're using Apple's default font, SF Pro (or similar) and (b) you want to match iOS conventions.",
+    "host_name": "learnui.design",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/la/videos/play/wwdc2020/10175",
+    "name": "The details of UI typography - WWDC20 - Videos - Apple Developer",
+    "snippet": "Get up to speed on the latest advancements to the San Francisco font family including the move to variable fonts for accommodating optical sizes and weights. We ...",
+    "host_name": "developer.apple.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.reddit.com/r/UI_Design/comments/10mtwi7/anyone_know_why_apples_hci_guidelines_have_there",
+    "name": "Anyone know why Apples HCI Guidelines have there Subheading",
+    "snippet": "It's a subheading, no reason for it to be bigger than body text, it's probably that size because it complements the heading text and looks ...",
+    "host_name": "www.reddit.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://acorn.firefox.com/latest/mobile/styles/typography/i-os-sY8HuQc0",
+    "name": "iOS | Typography - Acorn Design System",
+    "snippet": "SF Pro is the system font for iOS and iPadOS. Refer to Apple's Human Interface Guidelines for the type scale: Typography. Human Interface Guidelines. Dynamic ...",
+    "host_name": "acorn.firefox.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://uxdesign.cc/designing-for-scalable-dynamic-type-in-ios-5d3e2ae554eb",
+    "name": "Designing for scalable Dynamic Type in iOS for accessibility",
+    "snippet": "Titles scale larger at a lower rate, especially in the larger size. Body style texts are in the middle. Captions and other small text styles ...",
+    "host_name": "uxdesign.cc",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://median.co/blog/apples-ui-dos-and-donts-typography",
+    "name": "What are Apple's guidelines on typography for iOS apps? - Median.co",
+    "snippet": "Font size: Larger text such as a title or a heading (H1, H2, H3) showcase importance while smaller text such as body text are used to support ...",
+    "host_name": "median.co",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

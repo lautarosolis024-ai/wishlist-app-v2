@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/tab-bars",
+    "name": "Tab bars | Apple Developer Documentation",
+    "snippet": "A tab bar lets people navigate among different sections of an app, like the Alarm, Stopwatch, and Timer tabs in the Clock app.\nA tab bar floats above content at the bottom of the screen. Its items rest on a Liquid Glass background that allows content beneath to peek through. For tab ...",
+    "host_name": "developer.apple.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/toolbars",
+    "name": "Toolbars | Apple Developer Documentation",
+    "snippet": "A toolbar consists of one or more sets of controls arranged horizontally along the top or bottom edge of the view, grouped into logical sections.\nIn contrast to a toolbar, a tab bar is specifically for navigating between areas of an app. Best practices. Choose items deliberately to avoid overcrowding.",
+    "host_name": "developer.apple.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines",
+    "name": "Human Interface Guidelines | Apple Developer Documentation",
+    "snippet": "The HIG contains guidance and best practices that can help you design a great experience for any Apple platform.",
+    "host_name": "developer.apple.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/navigation-and-search",
+    "name": "Navigation and search | Apple Developer Documentation",
+    "snippet": "To navigate the symbols, press Up Arrow, Down Arrow, Left Arrow or Right Arrow. An icon of a grid comprised of four squares.",
+    "host_name": "developer.apple.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2022/10001",
+    "name": "Explore navigation design for iOS - WWDC22 - Videos",
+    "snippet": "Learn best practices and common pitfalls when working with tab bars, modality, and more. Resources. Explore the Human Interface Guidelines · HD Video · SD Video.",
+    "host_name": "developer.apple.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+    "name": "Buttons | Apple Developer Documentation",
+    "snippet": "Versatile and highly customizable, buttons give people simple, familiar ways to do tasks in your app. In general, a button combines three attributes to clearly ...",
+    "host_name": "developer.apple.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/lists-and-tables",
+    "name": "Lists and tables | Apple Developer Documentation",
+    "snippet": "A table or list can represent data that's organized in groups or hierarchies, and it can support user interactions like selecting, adding, deleting, and ...",
+    "host_name": "developer.apple.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/356",
+    "name": "Get to know the new design system - WWDC25 - Apple Developer",
+    "snippet": "Dive deeper into the new design system to explore key changes to visual design, information architecture, and core system components.",
+    "host_name": "developer.apple.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/whats-new",
+    "name": "What's new - Design - Apple Developer",
+    "snippet": "Explore the new navigation system in iPadOS 18, which gives people the flexibility to choose between using a tab bar or sidebar. Design great visionOS apps.",
+    "host_name": "developer.apple.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/sheets",
+    "name": "Sheets | Apple Developer Documentation",
+    "snippet": "A sheet is useful for requesting specific information from people or presenting a simple task that they can complete before returning to the parent view.",
+    "host_name": "developer.apple.com",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

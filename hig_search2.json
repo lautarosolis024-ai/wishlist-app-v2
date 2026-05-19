@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/219",
+    "name": "Meet Liquid Glass - WWDC25 - Videos - Apple Developer",
+    "snippet": "Liquid Glass unifies Apple platform design language while providing a more dynamic and expressive user experience.",
+    "host_name": "developer.apple.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/design/human-interface-guidelines/materials",
+    "name": "Materials | Apple Developer Documentation",
+    "snippet": "A material is a visual effect that creates a sense of depth, layering, and hierarchy between foreground and background elements.",
+    "host_name": "developer.apple.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass",
+    "name": "Adopting Liquid Glass | Apple Developer Documentation",
+    "snippet": "Liquid Glass seeks to bring attention to the underlying content, and overusing this material in multiple custom controls can provide a subpar user experience by ...",
+    "host_name": "developer.apple.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.reddit.com/r/apple/comments/1njb39m/ios_26_liquid_glass_design_makes_app_icons_look",
+    "name": "iOS 26 Liquid Glass Design Makes App Icons Look Crooked, Report",
+    "snippet": "Liquid Glass adds subtle glowing effects to app icons' top-left and bottom-right corners, creating a glass-like appearance with depth and ...",
+    "host_name": "www.reddit.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://medium.com/@madebyluddy/overview-37b3685227aa",
+    "name": "iOS 26 Liquid Glass: Comprehensive Reference | Medium",
+    "snippet": "Liquid Glass is a translucent, dynamic material that reflects and refracts surrounding content while transforming to bring focus to user tasks.",
+    "host_name": "medium.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://designedforhumans.tech/blog/liquid-glass-smart-or-bad-for-accessibility",
+    "name": "Apple's New Liquid Glass Design: Practical Guidance for Designers",
+    "snippet": "A dynamic “digital meta-material” that combines real-time blur, depth-based refraction and specular highlights to create floating panels and ...",
+    "host_name": "designedforhumans.tech",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=jGztGfRujSE",
+    "name": "Introducing Liquid Glass | Apple - YouTube",
+    "snippet": "Meet our next chapter in software design, built with the sleek and expressive material Liquid Glass. This universal design puts greater ...",
+    "host_name": "www.youtube.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/documentation/TechnologyOverviews/liquid-glass",
+    "name": "Liquid Glass | Apple Developer Documentation",
+    "snippet": "Interfaces across Apple platforms feature a new dynamic material called Liquid Glass, which combines the optical properties of glass with a sense of fluidity.",
+    "host_name": "developer.apple.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://developer.apple.com/videos/play/wwdc2025/356",
+    "name": "Get to know the new design system - WWDC25 - Apple Developer",
+    "snippet": "Human Interface Guidelines · Human Interface Guidelines: Materials · HD Video · SD Video. Related Videos. WWDC25. Create icons with Icon Composer · Meet Liquid ...",
+    "host_name": "developer.apple.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.linkedin.com/posts/sarahjaynepreston_uxdesign-accessibility-usability-activity-7338861399114215425-eef3",
+    "name": "iOS 26's 'Liquid Glass' UI: A step forward or a step back? - LinkedIn",
+    "snippet": "This special effect refracts the content underneath, intentionally distorting it into blobby messes that interfere with the overall appearance ...",
+    "host_name": "www.linkedin.com",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]
