@@ -33,3 +33,29 @@ Stage Summary:
 - Scrape tested with Nike Argentina (successfully extracts title, price, brand, store, category)
 - SQLite database with 2 models
 - Design system based on Apple HIG: Liquid Glass, spring animations, typography, spacing
+---
+Task ID: 1
+Agent: Main Agent
+Task: Fix ZAI SDK "fetch failed" error on Vercel + Create Apple HIG app icon
+
+Work Log:
+- Inspected z-ai-web-dev-sdk source code (dist/index.js) to understand config loading
+- Discovered the ZAI API at 172.25.136.193:8080 is a private IP unreachable from Vercel
+- Created src/lib/scraper.ts - standalone web scraper using direct fetch() (no ZAI dependency)
+- Rewrote src/app/api/scrape/route.ts to use direct fetch first, ZAI page_reader as fallback
+- Added comprehensive regex-based product data extraction when LLM is unavailable
+- Rewrote src/app/api/recommend-size/route.ts with regex-based size recommendation fallback
+- Fixed src/lib/zai.ts to return null gracefully (no more "config not found" crash)
+- Generated 8+ AI icon concepts, selected the best (gift tags forming heart shape)
+- Created all required icon sizes (16px to 1024px) + favicon.ico
+- Created PWA manifest.json
+- Updated layout.tsx with proper icon metadata, Twitter cards, and manifest reference
+- Built and verified successfully
+- Pushed to GitHub (commit fdb05b6)
+
+Stage Summary:
+- Vercel "fetch failed" error FIXED: app now uses direct fetch() for scraping (works on Vercel)
+- LLM features gracefully degrade: regex fallback when ZAI API unavailable
+- App icon: Professional Apple HIG-style icon with gift tags forming heart metaphor
+- All icon sizes generated: 16, 32, 76, 120, 152, 180, 192, 512, 1024px + favicon.ico
+- PWA manifest.json added for installability
