@@ -5,9 +5,9 @@ let zaiInstance: InstanceType<typeof ZAI> | null = null
 /**
  * Initialize the Z-AI SDK using environment variables.
  *
- * The SDK's `ZAI.create()` reads from a `.z-ai-config` file on disk,
- * which doesn't exist on Vercel's read-only serverless filesystem.
- * Instead, we use `new ZAI(config)` directly with env vars.
+ * On Vercel (serverless), the .z-ai-config file doesn't exist on the
+ * read-only filesystem. We bypass ZAI.create() (which reads the file)
+ * and instantiate the SDK directly with `new ZAI(config)` from env vars.
  *
  * Required env vars (set in Vercel dashboard):
  *   ZAI_BASE_URL  - API base URL
@@ -21,24 +21,17 @@ export async function getZAI() {
     const baseUrl = process.env.ZAI_BASE_URL
     const apiKey = process.env.ZAI_API_KEY
 
-    console.log('[ZAI] Initializing SDK...')
-    console.log('[ZAI] ZAI_BASE_URL set:', !!baseUrl)
-    console.log('[ZAI] ZAI_API_KEY set:', !!apiKey)
-
     if (baseUrl && apiKey) {
-      // Use env vars directly — works on Vercel serverless
-      const config = {
+      // Use env vars directly — works on Vercel serverless (no file needed)
+      zaiInstance = new ZAI({
         baseUrl,
         apiKey,
         chatId: process.env.ZAI_CHAT_ID || '',
         token: process.env.ZAI_TOKEN || '',
         userId: process.env.ZAI_USER_ID || '',
-      }
-      console.log('[ZAI] Using env vars config, baseUrl:', baseUrl)
-      zaiInstance = new ZAI(config)
+      })
     } else {
-      // Fallback: let the SDK read from .z-ai-config file (local dev)
-      console.log('[ZAI] No env vars found, falling back to config file')
+      // Fallback: let the SDK read from .z-ai-config file (local dev only)
       zaiInstance = await ZAI.create()
     }
   }

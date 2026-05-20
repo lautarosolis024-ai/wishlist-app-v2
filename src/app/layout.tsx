@@ -18,7 +18,13 @@ export const metadata: Metadata = {
   title: 'Wishlist — Tu lista universal',
   description: 'Pegá un link y tu wishlist se arma sola. Tracking de precios, recomendación de talles y más.',
   icons: {
-    icon: 'https://z-cdn.chatglm.cn/z-ai/static/logo.svg',
+    icon: '/favicon.ico',
+    apple: '/icon-512.png',
+  },
+  openGraph: {
+    title: 'Wishlist — Tu lista universal',
+    description: 'Pegá un link y tu wishlist se arma sola.',
+    images: ['/icon-512.png'],
   },
 }
 
@@ -28,7 +34,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover',
-  themeColor: '#8b5cf6',
+  themeColor: '#e8567f',
 }
 
 export default function RootLayout({
