@@ -21,17 +21,24 @@ export async function getZAI() {
     const baseUrl = process.env.ZAI_BASE_URL
     const apiKey = process.env.ZAI_API_KEY
 
+    console.log('[ZAI] Initializing SDK...')
+    console.log('[ZAI] ZAI_BASE_URL set:', !!baseUrl)
+    console.log('[ZAI] ZAI_API_KEY set:', !!apiKey)
+
     if (baseUrl && apiKey) {
       // Use env vars directly — works on Vercel serverless
-      zaiInstance = new ZAI({
+      const config = {
         baseUrl,
         apiKey,
         chatId: process.env.ZAI_CHAT_ID || '',
         token: process.env.ZAI_TOKEN || '',
         userId: process.env.ZAI_USER_ID || '',
-      })
+      }
+      console.log('[ZAI] Using env vars config, baseUrl:', baseUrl)
+      zaiInstance = new ZAI(config)
     } else {
       // Fallback: let the SDK read from .z-ai-config file (local dev)
+      console.log('[ZAI] No env vars found, falling back to config file')
       zaiInstance = await ZAI.create()
     }
   }
