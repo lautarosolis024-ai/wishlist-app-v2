@@ -1,4 +1,5 @@
 import { getZAI } from '@/lib/zai'
+import { scrapePage } from '@/lib/scraper'
 import { NextRequest, NextResponse } from 'next/server'
 
 interface ScrapeResult {
@@ -32,6 +33,7 @@ function extractStoreFromUrl(url: string): string {
     const storeMap: Record<string, string> = {
       'mercadolibre.com.ar': 'MercadoLibre',
       'tiendanube.com': 'TiendaNube',
+      'mitiendanube.com': 'TiendaNube',
       'midway.com.ar': 'Midway',
       'zara.com': 'Zara',
       'nike.com': 'Nike',
@@ -40,6 +42,10 @@ function extractStoreFromUrl(url: string): string {
       'c-and.com': 'C&A',
       'falabella.com.ar': 'Falabella',
       'hm.com': 'H&M',
+      'amazon.com': 'Amazon',
+      'amazon.com.ar': 'Amazon',
+      'shein.com': 'Shein',
+      'aliexpress.com': 'AliExpress',
     }
     for (const [domain, name] of Object.entries(storeMap)) {
       if (hostname.includes(domain)) return name
@@ -161,7 +167,17 @@ function extractProductImages(html: string, url: string): string[] {
     )
   }
 
-  // 8. Filter by product path or slug
+  // 8. Resolve relative URLs
+  try {
+    const baseUrl = new URL(url).origin
+    images = images.map(img => {
+      if (img.startsWith('//')) return `https:${img}`
+      if (img.startsWith('/')) return `${baseUrl}${img}`
+      return img
+    })
+  } catch { /* skip URL resolution */ }
+
+  // 9. Filter by product path or slug
   const productPathImages = images.filter(img => {
     const lower = img.toLowerCase()
     return lower.includes('/products/') || lower.includes('/product/') || lower.includes('/p/')
@@ -201,7 +217,7 @@ function extractProductImages(html: string, url: string): string[] {
     return productPathImages.slice(0, 10)
   }
 
-  // 9. Fallback: return all filtered images
+  // 10. Fallback: return all filtered images
   return images.slice(0, 10)
 }
 
@@ -242,6 +258,163 @@ function extractRelevantHtml(html: string): string {
   return [head, productSection, sizeGuide, jsonLd].filter(Boolean).join('\n---SECTION---\n').substring(0, 20000)
 }
 
+/**
+ * Regex-based fallback extraction when LLM is unavailable.
+ * Extracts basic product data from HTML meta tags and JSON-LD.
+ */
+function extractProductDataRegex(
+  html: string,
+  url: string,
+  pageTitle: string
+): Omit<ScrapeResult, 'images'> {
+  const store = extractStoreFromUrl(url)
+  const metaDescription = extractDescriptionFromHtml(html)
+
+  // Try JSON-LD first
+  let title = pageTitle
+  let price: number | null = null
+  let originalPrice: number | null = null
+  let currency = 'ARS'
+  let brand: string | null = null
+  let description: string | null = metaDescription
+  let category = 'otros'
+  let color: string | null = null
+  let sizeGuideText: string | null = null
+
+  const jsonLdPattern = /<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
+  let m: RegExpExecArray | null
+  while ((m = jsonLdPattern.exec(html)) !== null) {
+    try {
+      const json = JSON.parse(m[1])
+      if (json['@type'] === 'Product' || json.name) {
+        if (json.name) title = json.name
+        if (json.brand?.name) brand = json.brand.name
+        if (json.description) description = json.description.substring(0, 500)
+        if (json.color) color = json.color
+
+        // Extract offers
+        const offers = json.offers || json.offers
+        if (offers) {
+          const offerList = Array.isArray(offers) ? offers : [offers]
+          for (const offer of offerList) {
+            if (offer.price && !price) {
+              price = parseFloat(offer.price)
+              currency = offer.priceCurrency || 'ARS'
+            }
+            if (offer.highPrice && !originalPrice) {
+              originalPrice = parseFloat(offer.highPrice)
+            }
+          }
+        }
+
+        // Extract images from JSON-LD
+        if (json.image) {
+          // Already handled in extractProductImages
+        }
+      }
+    } catch { /* skip invalid JSON-LD */ }
+  }
+
+  // Try meta price tags
+  if (!price) {
+    const pricePatterns = [
+      /<meta\s+(?:property|itemprop)=["'](?:product:price:amount|price)["']\s+content=["']([^"']+)["']/i,
+      /<meta\s+content=["']([^"']+)["']\s+(?:property|itemprop)=["'](?:product:price:amount|price)["']/i,
+    ]
+    for (const pattern of pricePatterns) {
+      const match = html.match(pattern)
+      if (match?.[1]) {
+        price = parseFloat(match[1].replace(/[^\d.,]/g, '').replace(/\.(?=\d{3})/g, '').replace(',', '.'))
+        break
+      }
+    }
+  }
+
+  // Try meta currency
+  const currencyPatterns = [
+    /<meta\s+(?:property|itemprop)=["'](?:product:price:currency|priceCurrency)["']\s+content=["']([^"']+)["']/i,
+    /<meta\s+content=["']([^"']+)["']\s+(?:property|itemprop)=["'](?:product:price:currency|priceCurrency)["']/i,
+  ]
+  for (const pattern of currencyPatterns) {
+    const match = html.match(pattern)
+    if (match?.[1]) {
+      currency = match[1]
+      break
+    }
+  }
+
+  // Try brand from meta
+  if (!brand) {
+    const brandPatterns = [
+      /<meta\s+(?:property|itemprop)=["'](?:product:brand|brand)["']\s+content=["']([^"']+)["']/i,
+      /<meta\s+content=["']([^"']+)["']\s+(?:property|itemprop)=["'](?:product:brand|brand)["']/i,
+    ]
+    for (const pattern of brandPatterns) {
+      const match = html.match(pattern)
+      if (match?.[1]) {
+        brand = match[1]
+        break
+      }
+    }
+  }
+
+  // Category detection from URL and title
+  const lowerTitle = title.toLowerCase()
+  const lowerUrl = url.toLowerCase()
+  if (/zapatilla|zapato|bota|ojota|sneaker|shoe|boot|calzado/.test(lowerTitle + lowerUrl)) {
+    category = 'calzado'
+  } else if (/remera|camisa|pantalón|pantalon|jeans|shorts|campera|buzo|sweater|vestido|pollera|hoodie|jacket|shirt|dress|coat/.test(lowerTitle + lowerUrl)) {
+    category = 'ropa'
+  } else if (/celular|notebook|laptop|tablet|auriculares|smartwatch|cámara|camera|tech|tecnología/.test(lowerTitle + lowerUrl)) {
+    category = 'tecnologia'
+  } else if (/accesorio|accessory|reloj|watch|bolsito|bag|cartera|lentes|glasses|gorra|hat/.test(lowerTitle + lowerUrl)) {
+    category = 'accesorios'
+  } else if (/deporte|sport|gym|gimnasio|fitness|running|fútbol|soccer/.test(lowerTitle + lowerUrl)) {
+    category = 'deportes'
+  } else if (/mueble|furniture|silla|chair|mesa|table|sofá|sofa|cama|bed|hogar|home|decoración/.test(lowerTitle + lowerUrl)) {
+    category = 'hogar'
+  }
+
+  // Size guide extraction
+  const sizeGuideHtml = extractSizeGuideFromHtml(html)
+  if (sizeGuideHtml) {
+    sizeGuideText = sizeGuideHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 5000)
+  }
+
+  // Extract price from page content if still not found
+  if (!price) {
+    // Look for common price patterns in the HTML
+    const priceContentPatterns = [
+      /(?:precio|price|ARS|\$)\s*[:\s]*\$?\s*([\d.,]+)/i,
+      /class=["'][^"']*price[^"']*["'][^>]*>[\s\S]*?([\d.,]+)/i,
+    ]
+    for (const pattern of priceContentPatterns) {
+      const match = html.match(pattern)
+      if (match?.[1]) {
+        const cleaned = match[1].replace(/\.(?=\d{3})/g, '').replace(',', '.')
+        const parsed = parseFloat(cleaned)
+        if (parsed > 0 && parsed < 10000000) {
+          price = parsed
+          break
+        }
+      }
+    }
+  }
+
+  return {
+    title: title || pageTitle,
+    price,
+    originalPrice,
+    currency,
+    brand,
+    store,
+    description,
+    sizeGuide: sizeGuideText,
+    category,
+    color,
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { url } = await req.json()
@@ -249,33 +422,58 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'URL is required' }, { status: 400 })
     }
 
-    const zai = await getZAI()
+    // Step 1: Fetch the page using direct fetch (works on Vercel!)
+    let html: string
+    let pageTitle: string
+    try {
+      const pageResult = await scrapePage(url)
+      html = pageResult.html
+      pageTitle = pageResult.title
+    } catch (fetchError) {
+      console.error('[Scrape] Direct fetch failed:', fetchError)
 
-    // Step 1: Fetch the page
-    const pageResult = await zai.functions.invoke('page_reader', { url })
-    const html: string = pageResult.data?.html || ''
-    const pageTitle: string = pageResult.data?.title || ''
+      // Fallback: try ZAI page_reader if direct fetch fails
+      try {
+        const zai = await getZAI()
+        if (zai) {
+          const pageResult = await zai.functions.invoke('page_reader', { url })
+          html = pageResult.data?.html || ''
+          pageTitle = pageResult.data?.title || ''
+        } else {
+          return NextResponse.json(
+            { error: `No se pudo acceder a la página. Verificá que la URL sea correcta y que el sitio esté accesible. (${fetchError instanceof Error ? fetchError.message : 'Error desconocido'})` },
+            { status: 422 }
+          )
+        }
+      } catch (zaiError) {
+        console.error('[Scrape] ZAI page_reader also failed:', zaiError)
+        return NextResponse.json(
+          { error: `No se pudo acceder a la página. Verificá que la URL sea correcta. (${fetchError instanceof Error ? fetchError.message : 'Error desconocido'})` },
+          { status: 422 }
+        )
+      }
+    }
 
     if (!html || html.length < 100) {
-      return NextResponse.json({ error: 'Could not fetch page content' }, { status: 422 })
+      return NextResponse.json({ error: 'No se pudo obtener el contenido de la página.' }, { status: 422 })
     }
 
     // Step 2: Extract images using regex-based strategy
     const images = extractProductImages(html, url)
 
-    // Step 3: Extract size guide
-    const sizeGuideHtml = extractSizeGuideFromHtml(html)
+    // Step 3: Try LLM extraction first, fall back to regex
+    let result: ScrapeResult
 
-    // Step 4: Extract description from meta tags
-    const metaDescription = extractDescriptionFromHtml(html)
+    try {
+      const zai = await getZAI()
+      if (zai) {
+        // LLM-powered extraction
+        const store = extractStoreFromUrl(url)
+        const metaDescription = extractDescriptionFromHtml(html)
+        const sizeGuideHtml = extractSizeGuideFromHtml(html)
+        const relevantHtml = extractRelevantHtml(html)
 
-    // Step 5: Extract store from URL
-    const store = extractStoreFromUrl(url)
-
-    // Step 6: Use LLM to extract structured data
-    const relevantHtml = extractRelevantHtml(html)
-
-    const prompt = `You are a product data extraction expert. Extract product information from this HTML of a product page.
+        const prompt = `You are a product data extraction expert. Extract product information from this HTML of a product page.
 
 URL: ${url}
 Page title: ${pageTitle}
@@ -307,35 +505,46 @@ Rules:
 - For tecnologia: celular, notebook, tablet, auriculares, smartwatch, cámara
 - Return ONLY the JSON, nothing else.`
 
-    const completion = await zai.chat.completions.create({
-      messages: [
-        { role: 'system', content: 'You are a precise data extraction assistant. Return only valid JSON, no markdown or explanation.' },
-        { role: 'user', content: prompt },
-      ],
-      temperature: 0.1,
-    })
+        const completion = await zai.chat.completions.create({
+          messages: [
+            { role: 'system', content: 'You are a precise data extraction assistant. Return only valid JSON, no markdown or explanation.' },
+            { role: 'user', content: prompt },
+          ],
+          temperature: 0.1,
+        })
 
-    const llmResponse = completion.choices?.[0]?.message?.content || '{}'
-    let extracted: Record<string, unknown>
-    try {
-      const jsonStr = llmResponse.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim()
-      extracted = JSON.parse(jsonStr)
-    } catch {
-      extracted = { title: pageTitle }
-    }
+        const llmResponse = completion.choices?.[0]?.message?.content || '{}'
+        let extracted: Record<string, unknown>
+        try {
+          const jsonStr = llmResponse.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim()
+          extracted = JSON.parse(jsonStr)
+        } catch {
+          extracted = { title: pageTitle }
+        }
 
-    const result: ScrapeResult = {
-      title: (extracted.title as string) || pageTitle,
-      price: (extracted.price as number) ?? null,
-      originalPrice: (extracted.originalPrice as number) ?? null,
-      currency: (extracted.currency as string) || 'ARS',
-      brand: (extracted.brand as string) || null,
-      store,
-      description: (extracted.description as string) || metaDescription,
-      images,
-      sizeGuide: (extracted.sizeGuideText as string) || (sizeGuideHtml ? sizeGuideHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 5000) : null),
-      category: (extracted.category as string) || 'otros',
-      color: (extracted.color as string) || null,
+        result = {
+          title: (extracted.title as string) || pageTitle,
+          price: (extracted.price as number) ?? null,
+          originalPrice: (extracted.originalPrice as number) ?? null,
+          currency: (extracted.currency as string) || 'ARS',
+          brand: (extracted.brand as string) || null,
+          store,
+          description: (extracted.description as string) || metaDescription,
+          images,
+          sizeGuide: (extracted.sizeGuideText as string) || (sizeGuideHtml ? sizeGuideHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 5000) : null),
+          category: (extracted.category as string) || 'otros',
+          color: (extracted.color as string) || null,
+        }
+      } else {
+        // No ZAI available — use regex fallback
+        const regexResult = extractProductDataRegex(html, url, pageTitle)
+        result = { ...regexResult, images }
+      }
+    } catch (llmError) {
+      // LLM failed — fall back to regex extraction
+      console.warn('[Scrape] LLM extraction failed, using regex fallback:', llmError)
+      const regexResult = extractProductDataRegex(html, url, pageTitle)
+      result = { ...regexResult, images }
     }
 
     return NextResponse.json(result)

@@ -18,10 +18,25 @@ export const metadata: Metadata = {
   title: 'Wishlist — Tu lista universal',
   description: 'Pegá un link y tu wishlist se arma sola. Tracking de precios, recomendación de talles y más.',
   icons: {
-    icon: '/favicon.ico',
-    apple: '/icon-512.png',
+    icon: [
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '48x48' },
+    ],
+    apple: [
+      { url: '/icon-120.png', sizes: '120x120', type: 'image/png' },
+      { url: '/icon-152.png', sizes: '152x152', type: 'image/png' },
+      { url: '/icon-180.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
+  manifest: '/manifest.json',
   openGraph: {
+    title: 'Wishlist — Tu lista universal',
+    description: 'Pegá un link y tu wishlist se arma sola.',
+    images: [{ url: '/icon-512.png', width: 512, height: 512 }],
+  },
+  twitter: {
+    card: 'summary',
     title: 'Wishlist — Tu lista universal',
     description: 'Pegá un link y tu wishlist se arma sola.',
     images: ['/icon-512.png'],

@@ -1,39 +1,52 @@
-import ZAI from 'z-ai-web-dev-sdk'
+import ZAI, { type ZAIConfig } from 'z-ai-web-dev-sdk'
 
-let zaiInstance: InstanceType<typeof ZAI> | null = null
+let zaiInstance: ZAI | null = null
 
 /**
- * Initialize the Z-AI SDK using environment variables.
- *
- * On Vercel (serverless), the .z-ai-config file doesn't exist on the
- * read-only filesystem. We bypass ZAI.create() (which reads the file)
- * and instantiate the SDK directly with `new ZAI(config)` from env vars.
- *
- * Required env vars (set in Vercel dashboard):
- *   ZAI_BASE_URL  - API base URL
- *   ZAI_API_KEY   - API key
- *   ZAI_CHAT_ID   - (optional) chat session ID
- *   ZAI_TOKEN     - (optional) JWT token
- *   ZAI_USER_ID   - (optional) user ID
+ * Get ZAI SDK instance — uses env vars on Vercel, config file locally.
+ * Returns null if no configuration is available (LLM features disabled gracefully).
  */
-export async function getZAI() {
-  if (!zaiInstance) {
-    const baseUrl = process.env.ZAI_BASE_URL
-    const apiKey = process.env.ZAI_API_KEY
+export async function getZAI(): Promise<ZAI | null> {
+  if (zaiInstance) return zaiInstance
 
-    if (baseUrl && apiKey) {
-      // Use env vars directly — works on Vercel serverless (no file needed)
-      zaiInstance = new ZAI({
+  const baseUrl = process.env.ZAI_BASE_URL
+  const apiKey = process.env.ZAI_API_KEY
+
+  if (baseUrl && apiKey) {
+    try {
+      // The SDK's TypeScript types declare constructor as private,
+      // but the JS runtime supports direct instantiation with config.
+      // This is the ONLY way to use the SDK on Vercel (no config file).
+      const config: ZAIConfig = {
         baseUrl,
         apiKey,
         chatId: process.env.ZAI_CHAT_ID || '',
         token: process.env.ZAI_TOKEN || '',
         userId: process.env.ZAI_USER_ID || '',
-      })
-    } else {
-      // Fallback: let the SDK read from .z-ai-config file (local dev only)
-      zaiInstance = await ZAI.create()
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      zaiInstance = new (ZAI as any)(config) as ZAI
+      return zaiInstance
+    } catch (error) {
+      console.warn('[ZAI] Failed to initialize with env vars:', error)
+      return null
     }
   }
-  return zaiInstance
+
+  // Fallback: try reading from .z-ai-config file (local dev only)
+  try {
+    zaiInstance = await ZAI.create()
+    return zaiInstance
+  } catch {
+    console.warn('[ZAI] No config file found and no env vars set. LLM features will use regex fallback.')
+    return null
+  }
+}
+
+/**
+ * Check if LLM (chat completions) is available.
+ */
+export async function isLLMAvailable(): Promise<boolean> {
+  const zai = await getZAI()
+  return zai !== null
 }
